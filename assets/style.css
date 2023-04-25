@@ -16,6 +16,7 @@ body {
 }
 
 .container {
+  /* display: flex; */
   padding: 20px 70px;
   color: aliceblue;
 }
@@ -51,6 +52,24 @@ body {
   justify-content: space-between;
 }
 
+#input {
+  padding: 10px 150px;
+}
+
+#searchbar {
+  text-align: center;
+}
+
+#submitBtn {
+  border-radius: 15px;
+  background: rgba(24, 24, 27, 0.4);
+  /* display: block; */
+  padding: 10px;
+  color: aliceblue;
+  width: 100%;
+  margin: 5px;
+}
+
 /* .today {
   display: flex;
   flex-direction: column;
@@ -64,7 +83,7 @@ body {
 
 .future-info {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   position: fixed;
   background: rgba(10, 10, 10, 0.2);
   padding: 20px;
@@ -73,6 +92,7 @@ body {
   width: 100%;
   align-items: center;
   bottom: 0;
+  color: aliceblue;
   /* overflow-y: hidden; */
 }
 
