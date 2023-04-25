@@ -52,7 +52,7 @@ body {
   justify-content: space-between;
 }
 
-#input {
+#userInput {
   padding: 10px 150px;
 }
 
@@ -69,17 +69,6 @@ body {
   width: 100%;
   margin: 5px;
 }
-
-/* .today {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: rgba(10, 10, 10, 0.2);
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid aliceblue;
-  margin: 10px 0px;
-} */
 
 .future-info {
   display: flex;
