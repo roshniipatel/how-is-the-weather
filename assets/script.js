@@ -1,7 +1,6 @@
 var timeEl = document.getElementById('time');
 var dateEl = document.getElementById('date');
 var currentWeatherEl = document.getElementById('weather-things');
-// var currentTempEl = document.getElementById('current-temp');
 var weatherForecastEl = document.getElementById('weather-forecast');
 var searchBtn = document.getElementById('submitBtn');
 var inputEl = document.getElementById('userInput');
@@ -10,16 +9,14 @@ var searchList = document.getElementById('search-list');
 
 
 var APIkey = '6304977c8ab162e4275bff1dfb9b99ec';
-var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}&units=imperial`;
-var city = document.getElementById('submitBtn').value;
-var lat;
-var lon;
+var city 
+// document.getElementById('submitBtn').value;
+
 var weatherForecast = [];
 var latlonURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIkey}`;
 var historyArr = []
+var dateNow = dayjs();
 
-
-// ToDo: get and set history in local storage
 
 
 // function to show current time
@@ -33,7 +30,6 @@ setInterval(displayTime, 1000);
 
 // function to show current date
 function displayDate() {
-  var dateNow = dayjs()
   var currentDate = dateNow.format('dddd, MMMM D[,] YYYY');
   dateEl.textContent = currentDate;
 };
@@ -44,32 +40,56 @@ setInterval(displayDate, 24 * 60 * 60 * 1000);
 // on button click get city name
 function getCityName() {
   city = inputEl.value
+  saveCity()
   getGeolocation();
 };
 
 
-// event listener
-searchBtn.addEventListener('click', function (event) {
-  event.preventDefault();
-  var searchText = userInput.value;
-  if (searchText === "") {
-    return;
+// once a user searches for a city, we want to save the city to local storage, and display it under the search bar
+
+function saveCity() {
+  var pastCities = localStorage.getItem('savedCities')
+
+  if (pastCities) {
+    historyArr = JSON.parse(pastCities)
   }
+  historyArr.push(city)
+  console.log(historyArr);
+  
+  localStorage.setItem('savedCities', JSON.stringify(historyArr))
+}
 
-  historyArr.push(searchText);
-  userInput.value = '';
+function renderCities() {
+  var prevCities = localStorage.getItem('savedCities')
+  var listEl = document.getElementById('search-list')
 
-  // storeSearchHistory();
-  // renderHistory();
-  getGeolocation(searchText);
+  listEl.innerHTML = '';
+  
+  if (prevCities) {
+    // turn it into an array
+    prevCities = JSON.parse(prevCities)
+    // for each city
+    prevCities.forEach(prevCity => {
+      // create an li and set it to the city name
+      // then append it to the list element (ul)
+      var listItem = document.createElement('li')
+      listItem.textContent = prevCity
+      listEl.append(listItem)
+    })
+  }
+}
 
-});
+
+
+// event listener
+searchBtn.addEventListener('click', getCityName);
+
 
 
 // we need a function to get geo location
 // we need to make a fetch request that gets data and saves for later
 // using the geolocation we can make our second fetch in the next function
-function getGeolocation(city) {
+function getGeolocation() {
   fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APIkey}`)
     .then(res => res.json())
     .then(data => {
@@ -85,21 +105,29 @@ function getGeolocation(city) {
 function getWeather(lat, lon) {
   fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}&units=imperial`)
     .then(res => res.json())
-    .then(data => {
+    .then(data => {      
+      
       // current day data
       var currentTempEl = document.querySelector('#current-temp');
       var currentWindEl = document.querySelector('#current-wind');
       var currentHumidityEl = document.querySelector('#current-humidity');
       var location = document.getElementById('location');
-
+      
       currentTempEl.textContent = data.list[0].main.temp + '°F';
       currentWindEl.textContent = data.list[0].wind.speed + 'mph';
       currentHumidityEl.textContent = data.list[0].main.humidity + '%';
       location.innerHTML = data.city.name;
-
-
-
+      
+      
+      
       // day 1 data
+
+      // get date, format and write to html
+      var tomorrow = dateNow.add(1, 'day');
+      var formatTomorrow = tomorrow.format('dddd');
+      var tomorrowEl = document.getElementById('day-1')
+      tomorrowEl.textContent = formatTomorrow
+
       var currentTempEl = document.querySelector('#temp-1');
       var currentWindEl = document.querySelector('#wind-1');
       var currentHumidityEl = document.querySelector('#humidity-1');
@@ -119,6 +147,11 @@ function getWeather(lat, lon) {
 
 
       // day 2 data
+      var tomorrow = dateNow.add(2, 'day');
+      var formatTomorrow = tomorrow.format('dddd');
+      var tomorrowEl = document.getElementById('day-2')
+      tomorrowEl.textContent = formatTomorrow
+
       var currentTempEl = document.querySelector('#temp-2');
       var currentWindEl = document.querySelector('#wind-2');
       var currentHumidityEl = document.querySelector('#humidity-2');
@@ -137,6 +170,11 @@ function getWeather(lat, lon) {
 
 
       // day 3 data
+      var tomorrow = dateNow.add(3, 'day');
+      var formatTomorrow = tomorrow.format('dddd');
+      var tomorrowEl = document.getElementById('day-3')
+      tomorrowEl.textContent = formatTomorrow
+
       var currentTempEl = document.querySelector('#temp-3');
       var currentWindEl = document.querySelector('#wind-3');
       var currentHumidityEl = document.querySelector('#humidity-3');
@@ -155,6 +193,11 @@ function getWeather(lat, lon) {
 
 
       // day 4 data
+      var tomorrow = dateNow.add(4, 'day');
+      var formatTomorrow = tomorrow.format('dddd');
+      var tomorrowEl = document.getElementById('day-4')
+      tomorrowEl.textContent = formatTomorrow
+
       var currentTempEl = document.querySelector('#temp-4');
       var currentWindEl = document.querySelector('#wind-4');
       var currentHumidityEl = document.querySelector('#humidity-4');
@@ -173,6 +216,11 @@ function getWeather(lat, lon) {
 
 
       // day 5 data
+      var tomorrow = dateNow.add(5, 'day');
+      var formatTomorrow = tomorrow.format('dddd');
+      var tomorrowEl = document.getElementById('day-5')
+      tomorrowEl.textContent = formatTomorrow
+
       var currentTempEl = document.querySelector('#temp-5');
       var currentWindEl = document.querySelector('#wind-5');
       var currentHumidityEl = document.querySelector('#humidity-5');
@@ -187,34 +235,9 @@ function getWeather(lat, lon) {
       var iconFiveImg = document.createElement('img');
       iconFiveImg.src = "http://openweathermap.org/img/wn/" + iconFive + "@2x.png";
       currentIconEl.appendChild(iconFiveImg);
+      renderCities()
     });
 };
 
+// renderCities()
 
-
-
-// currentTempEl.textContent = data.list[i].main.temp + '°F';
-      // currentHumidityEl.textContent = data.list[i].main.humidity + '%';
-      // currentWindEl.textContent = data.list[i].wind.speed + 'mph';
-      // location.textContent = data.city.name + ',  ' + data.city.country;
-
-
-   // }
-      // }
-
-      // for (let i = 0; i < 41; i += 8) {
-      //   var forecast = {}
-      //   forecast.innerHTML = data.list[0].main.temp + '°F';
-      //   forecast.innerHTML = data.list[0].main.humidity + '%';
-      //   forecast.innerHTML = data.list[0].weather[0].icon;
-      //   forecast.innerHTML = data.list[0].wind.speed + 'mph';
-      //   weatherForecast.push(forecast)
-
-      //   forecast.temp = data.list[0].main.temp + '°F';
-      //   forecast.humidity = data.list[0].main.humidity + '%';
-      //   forecast.icon = data.list[0].weather[0].icon;
-      //   forecast.wind = data.list[0].wind.speed + 'mph';
-      //   weatherForecast.push(forecast)
-      // }
-      // renderWeather();
-      // // console.log(data)
