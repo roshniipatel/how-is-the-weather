@@ -61,9 +61,10 @@ body {
   padding: 10px 150px;
 }
 
-/* #searchbar {
+#searchbar {
+  padding-left: 500px;
   text-align: center;
-} */
+}
 
 #submitBtn {
   border-radius: 15px;
@@ -78,16 +79,15 @@ body {
 .future-info {
   display: flex;
   justify-content: center;
-  /* left: 100px; */
   position: fixed;
   background: rgba(10, 10, 10, 0.2);
-  /* padding: 20px; */
   border-radius: 10px;
   border: 1px solid aliceblue;
   width: 100%;
   align-items: center;
   bottom: 0;
   color: aliceblue;
+  padding-right: 100px;
   /* overflow-y: hidden; */
 }
 
@@ -111,9 +111,8 @@ body {
 
 .weather-forecast {
   display: flex;
-
 }
 
 .weather-forecast-items {
-  padding: 50px;
+  padding: 60px;
 }
