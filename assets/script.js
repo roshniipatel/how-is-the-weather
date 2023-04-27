@@ -74,16 +74,23 @@ function renderCities() {
       // then append it to the list element (ul)
       var listItem = document.createElement('li')
       listItem.textContent = prevCity
-      listEl.append(listItem)
-    })
-  }
-}
+      listEl.appendChild(listItem)
 
+      for (var i = 0; i < historyArr.length; i++) {
+        var searchHistory = historyArr[i];
+        var button = document.createElement('button');
+        button.textContent = searchHistory;
+        searchList.appendChild(button);
+        button.addEventListener('click', function () {
+          getGeolocation(this.textContent);
+        })
+      };
+    });
+  };
+};
 
-
-// event listener
+// event listener for search button
 searchBtn.addEventListener('click', getCityName);
-
 
 
 // we need a function to get geo location
