@@ -19,6 +19,8 @@ var latlonURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5
 var historyArr = []
 
 
+// ToDo: get and set history in local storage
+
 
 // function to show current time
 function displayTime() {
@@ -37,7 +39,6 @@ function displayDate() {
 };
 displayDate();
 setInterval(displayDate, 24 * 60 * 60 * 1000);
-
 
 
 // on button click get city name
@@ -107,7 +108,13 @@ function getWeather(lat, lon) {
       currentTempEl.textContent = 'Temp: ' + data.list[8].main.temp + '°F';
       currentWindEl.textContent = 'Wind: ' + data.list[8].wind.speed + 'mph';
       currentHumidityEl.textContent = 'Humidity: ' + data.list[8].main.humidity + '%';
-      currentIconEl.textContent = data.list[8].weather[0].icon;
+
+      // jessica's code helped to figure out how to show all the icons
+      currentIconEl.textContent = "";
+      var iconOne = data.list[8].weather[0].icon;
+      var iconOneImg = document.createElement('img');
+      iconOneImg.src = "http://openweathermap.org/img/wn/" + iconOne + "@2x.png";
+      currentIconEl.appendChild(iconOneImg);
 
 
 
@@ -120,7 +127,12 @@ function getWeather(lat, lon) {
       currentTempEl.textContent = 'Temp: ' + data.list[16].main.temp + '°F';
       currentWindEl.textContent = 'Wind: ' + data.list[16].wind.speed + 'mph';
       currentHumidityEl.textContent = 'Humidity: ' + data.list[16].main.humidity + '%';
-      currentIconEl.textContent = data.list[16].weather[0].icon;
+
+      currentIconEl.textContent = "";
+      var iconTwo = data.list[16].weather[0].icon;
+      var iconTwoImg = document.createElement('img');
+      iconTwoImg.src = "http://openweathermap.org/img/wn/" + iconTwo + "@2x.png";
+      currentIconEl.appendChild(iconTwoImg);
 
 
 
@@ -133,7 +145,12 @@ function getWeather(lat, lon) {
       currentTempEl.textContent = 'Temp: ' + data.list[24].main.temp + '°F';
       currentWindEl.textContent = 'Wind: ' + data.list[24].wind.speed + 'mph';
       currentHumidityEl.textContent = 'Humidity: ' + data.list[24].main.humidity + '%';
-      currentIconEl.textContent = data.list[24].weather[0].icon;
+
+      currentIconEl.textContent = "";
+      var iconThree = data.list[24].weather[0].icon;
+      var iconThreeImg = document.createElement('img');
+      iconThreeImg.src = "http://openweathermap.org/img/wn/" + iconThree + "@2x.png";
+      currentIconEl.appendChild(iconThreeImg);
 
 
 
@@ -146,7 +163,12 @@ function getWeather(lat, lon) {
       currentTempEl.textContent = 'Temp: ' + data.list[32].main.temp + '°F';
       currentWindEl.textContent = 'Wind: ' + data.list[32].wind.speed + 'mph';
       currentHumidityEl.textContent = 'Humidity: ' + data.list[32].main.humidity + '%';
-      currentIconEl.textContent = data.list[32].weather[0].icon;
+
+      currentIconEl.textContent = "";
+      var iconFour = data.list[32].weather[0].icon;
+      var iconFourImg = document.createElement('img');
+      iconFourImg.src = "http://openweathermap.org/img/wn/" + iconFour + "@2x.png";
+      currentIconEl.appendChild(iconFourImg);
 
 
 
@@ -159,7 +181,12 @@ function getWeather(lat, lon) {
       currentTempEl.textContent = 'Temp: ' + data.list[39].main.temp + '°F';
       currentWindEl.textContent = 'Wind: ' + data.list[39].wind.speed + 'mph';
       currentHumidityEl.textContent = 'Humidity: ' + data.list[39].main.humidity + '%';
-      currentIconEl.textContent = data.list[39].weather[0].icon;
+
+      currentIconEl.textContent = "";
+      var iconFive = data.list[39].weather[0].icon;
+      var iconFiveImg = document.createElement('img');
+      iconFiveImg.src = "http://openweathermap.org/img/wn/" + iconFive + "@2x.png";
+      currentIconEl.appendChild(iconFiveImg);
     });
 };
 
