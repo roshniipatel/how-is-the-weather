@@ -14,7 +14,7 @@ The only thing you have to do is click on the 'Search City Here' which is where 
 
 Repository: https://github.com/roshniipatel/how-is-the-weather
 
-Github Page:  
+Deployed Page: https://roshniipatel.github.io/how-is-the-weather/
 
 ## Acknowledgements 
 
