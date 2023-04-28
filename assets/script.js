@@ -101,7 +101,7 @@ searchBtn.addEventListener('click', getCityName);
 // we need to make a fetch request that gets data and saves for later
 // using the geolocation we can make our second fetch in the next function
 function getGeolocation() {
-  fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APIkey}`)
+  fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APIkey}`)
     .then(res => res.json())
     .then(data => {
       lat = data[0].lat
@@ -152,7 +152,7 @@ function getWeather(lat, lon) {
       currentIconEl.textContent = "";
       var iconOne = data.list[8].weather[0].icon;
       var iconOneImg = document.createElement('img');
-      iconOneImg.src = "http://openweathermap.org/img/wn/" + iconOne + "@2x.png";
+      iconOneImg.src = "https://openweathermap.org/img/wn/" + iconOne + "@2x.png";
       currentIconEl.appendChild(iconOneImg);
 
 
@@ -175,7 +175,7 @@ function getWeather(lat, lon) {
       currentIconEl.textContent = "";
       var iconTwo = data.list[16].weather[0].icon;
       var iconTwoImg = document.createElement('img');
-      iconTwoImg.src = "http://openweathermap.org/img/wn/" + iconTwo + "@2x.png";
+      iconTwoImg.src = "https://openweathermap.org/img/wn/" + iconTwo + "@2x.png";
       currentIconEl.appendChild(iconTwoImg);
 
 
@@ -198,7 +198,7 @@ function getWeather(lat, lon) {
       currentIconEl.textContent = "";
       var iconThree = data.list[24].weather[0].icon;
       var iconThreeImg = document.createElement('img');
-      iconThreeImg.src = "http://openweathermap.org/img/wn/" + iconThree + "@2x.png";
+      iconThreeImg.src = "https://openweathermap.org/img/wn/" + iconThree + "@2x.png";
       currentIconEl.appendChild(iconThreeImg);
 
 
@@ -221,7 +221,7 @@ function getWeather(lat, lon) {
       currentIconEl.textContent = "";
       var iconFour = data.list[32].weather[0].icon;
       var iconFourImg = document.createElement('img');
-      iconFourImg.src = "http://openweathermap.org/img/wn/" + iconFour + "@2x.png";
+      iconFourImg.src = "https://openweathermap.org/img/wn/" + iconFour + "@2x.png";
       currentIconEl.appendChild(iconFourImg);
 
 
@@ -244,7 +244,7 @@ function getWeather(lat, lon) {
       currentIconEl.textContent = "";
       var iconFive = data.list[39].weather[0].icon;
       var iconFiveImg = document.createElement('img');
-      iconFiveImg.src = "http://openweathermap.org/img/wn/" + iconFive + "@2x.png";
+      iconFiveImg.src = "https://openweathermap.org/img/wn/" + iconFive + "@2x.png";
       currentIconEl.appendChild(iconFiveImg);
       renderCities()
     });
