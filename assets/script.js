@@ -10,13 +10,9 @@ var searchList = document.getElementById('search-list');
 
 var APIkey = '6304977c8ab162e4275bff1dfb9b99ec';
 var city 
-// document.getElementById('submitBtn').value;
-
 var weatherForecast = [];
-var latlonURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIkey}`;
 var historyArr = []
 var dateNow = dayjs();
-
 
 
 // function to show current time
@@ -57,7 +53,7 @@ function saveCity() {
   if (historyArr.indexOf(city) !== -1) {
     return
   }
-  
+
   historyArr.push(city)
   console.log(historyArr);
   
@@ -75,13 +71,8 @@ function renderCities() {
     prevCities = JSON.parse(prevCities)
     // for each city
     prevCities.forEach(prevCity => {
-      // create an li and set it to the city name
-      // then append it to the list element (ul)
-      // var listItem = document.createElement('li')
-      // listItem.textContent = prevCity
-      // listEl.appendChild(listItem)
       searchList.innerHTML = '';
-      searchList.style.display = 'flex'; // Set the display property to flex
+      searchList.style.display = 'flex'; 
       searchList.style.flexDirection = 'column';
 
       for (var i = 0; i < historyArr.length; i++) {
@@ -259,5 +250,4 @@ function getWeather(lat, lon) {
     });
 };
 
-// renderCities()
 
