@@ -8,7 +8,7 @@ I have created this app to show you the weather of the city you live in. It show
 
 The only thing you have to do is click on the 'Search City Here' which is where you will add your current city's name and then hit search which will quickly generate the weather for the day of and the next five days for you. 
 
-![A user searched up the city name and receives the weather.](./Develop/workday.png)
+![A user searched up the city name and receives the weather.](./assets/images/Check%20Weather!.gif) 
 
 ## Links
 

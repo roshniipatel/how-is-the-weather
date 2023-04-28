@@ -53,6 +53,11 @@ function saveCity() {
   if (pastCities) {
     historyArr = JSON.parse(pastCities)
   }
+
+  if (historyArr.indexOf(city) !== -1) {
+    return
+  }
+  
   historyArr.push(city)
   console.log(historyArr);
   
@@ -72,17 +77,25 @@ function renderCities() {
     prevCities.forEach(prevCity => {
       // create an li and set it to the city name
       // then append it to the list element (ul)
-      var listItem = document.createElement('li')
-      listItem.textContent = prevCity
-      listEl.appendChild(listItem)
+      // var listItem = document.createElement('li')
+      // listItem.textContent = prevCity
+      // listEl.appendChild(listItem)
+      searchList.innerHTML = '';
+      searchList.style.display = 'flex'; // Set the display property to flex
+      searchList.style.flexDirection = 'column';
 
       for (var i = 0; i < historyArr.length; i++) {
         var searchHistory = historyArr[i];
         var button = document.createElement('button');
         button.textContent = searchHistory;
+        button.style.fontSize = '30px';
+        button.style.backgroundColor = 'rgba(10, 10, 10, 0.2)';
         searchList.appendChild(button);
         button.addEventListener('click', function () {
-          getGeolocation(this.textContent);
+          console.log('clicked');
+          console.log(this.textContent); 
+          city = this.textContent; 
+          getGeolocation();
         })
       };
     });
